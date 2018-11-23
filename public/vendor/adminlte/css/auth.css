@@ -1,0 +1,11 @@
+.auth-links {
+    margin-top: 10px;
+}
+
+body{
+    background: url('https://www.pixelstalk.net/wp-content/uploads/2016/06/Fall-Scenery-HD-Pictures.jpg') !important;
+}
+
+.login-logo a, .register-logo a {
+    color: rgb(10,110,183,0.8);
+}
