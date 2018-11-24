@@ -14,6 +14,10 @@ class SWDonarsModel extends Model
 
     protected $table = "swdonars";
 
+    public function area(){
+        return $this->belongsTo('App\Models\Admin\AreasModel');
+    }
+
     static public function getActiveOnly(){
         return self::where(['status' => 1])->get();
     }

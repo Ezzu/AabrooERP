@@ -12,9 +12,9 @@
             <h3 class="box-title" style="padding-top: 6px;">Create New Donar</h3>
             <a class="btn btn-success pull-right" href="{{ route('admin.swdonars.index') }}">Back</a>
         </div>
-        {!! Form::model($Donar, ['method' => 'PUT', 'route' => ['admin.donars.update', $Donar->id]]) !!}
+        {!! Form::model($Donar, ['method' => 'PUT', 'route' => ['admin.swdonars.update', $Donar->id]]) !!}
             <div class="box-body table-responsive">
-                @include('admin.donars.fields')
+                @include('admin.swdonars.fields')
             </div>
             <div class="box-footer">
                 <button class="btn btn-danger"> Save </button>

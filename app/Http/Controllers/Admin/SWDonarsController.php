@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Donars\StoreUpdateRequest;
+use App\Http\Requests\Admin\SWDonars\StoreUpdateRequest;
 use App\Models\Admin\SWDonarsModel;
 use App\Models\Admin\AreasModel;
 use App\Models\Admin\PaymentTypesModel;
@@ -31,12 +31,9 @@ class SWDonarsController extends Controller
     public function create()
     {
         $Areas = AreasModel::pluckActiveOnly();
-        $Areas->prepend('Select an Area');
-
-        $PaymentTypes = PaymentTypesModel::pluckActiveOnly();
-        $PaymentTypes->prepend('Select a Payment Method');
+        $Areas->prepend('Select an Area', '');
         
-        return view('admin.swdonars.create', compact('Areas', 'PaymentTypes'));
+        return view('admin.swdonars.create', compact('Areas'));
     }
 
     /**
@@ -52,7 +49,7 @@ class SWDonarsController extends Controller
         $data['created_by'] = Auth::user()->id;
         $data['created_at'] = \Carbon\Carbon::now();
 
-        DonarsModel::create($data);
+        SWDonarsModel::create($data);
 
         return redirect()->route('admin.swdonars.index');
     }
@@ -77,15 +74,12 @@ class SWDonarsController extends Controller
     public function edit($id)
     {
         
-        $Donar = DonarsModel::findOrFail($id);
+        $Donar = SWDonarsModel::findOrFail($id);
 
         $Areas = AreasModel::pluckActiveOnly();
-        $Areas->prepend('Select an Area');
+        $Areas->prepend('Select an Area', '');
 
-        $PaymentTypes = PaymentTypesModel::pluckActiveOnly();
-        $PaymentTypes->prepend('Select a Payment Method');
-
-        return view('admin.swdonars.edit', compact('Donar', 'Areas', 'PaymentTypes'));
+        return view('admin.swdonars.edit', compact('Donar', 'Areas'));
 
     }
 
@@ -100,7 +94,7 @@ class SWDonarsController extends Controller
     {
         
         $data = $request->all();
-        $Donar = DonarsModel::findOrFail($id);
+        $Donar = SWDonarsModel::findOrFail($id);
         $data['updated_by'] = Auth::user()->id;
         $data['updated_at'] = \Carbon\Carbon::now();
         $Donar->update($data);
@@ -117,7 +111,7 @@ class SWDonarsController extends Controller
     public function destroy($id)
     {
         
-        DonarsModel::findOrFail($id)->delete();        
+        SWDonarsModel::findOrFail($id)->delete();        
         return redirect()->route('admin.swdonars.index');
 
     }

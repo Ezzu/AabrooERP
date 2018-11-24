@@ -17,7 +17,7 @@
 </div>
 
 <div class="{{ $errors->has('cnic') ? 'text-danger' : '' }} form-group col-md-3" id="cnic_div">
-    {!! Form::label('cnic', 'CNIC *', ['class' => 'control-label', 'style' => ""]) !!}
+    {!! Form::label('cnic', 'CNIC', ['class' => 'control-label', 'style' => ""]) !!}
     {!! Form::text('cnic', old('cnic'), ['class' => 'form-control']) !!}
     @if ($errors->has('cnic'))
         <div class="text-danger">{{ $errors->first('cnic') }}</div>

@@ -32,12 +32,12 @@
                             <td>{{ $Donar->id }}</td>
                             <td>{{ $Donar->donar_name }}</td>
                             <td>{{ $Donar->phone_no }}</td>
-                            <td>{{ $Donar->area_id }}</td>
+                            <td>{{ $Donar->area->name }}</td>
                             <td>{{ $Donar->address }}</td>
                             <td>{{ $Donar->created_at }}</td>
                             <td>
-                                <a href="{{ route('admin.donars.edit', ['id' => $Donar->id]) }}" class='btn btn-xs btn-info'><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
-                                <form action="{{ route('admin.donars.destroy', ['id' => $Donar->id]) }}">
+                                <a href="{{ route('admin.swdonars.edit', ['id' => $Donar->id]) }}" class='btn btn-xs btn-info'><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
+                                <form action="{{ route('admin.swdonars.destroy', ['id' => $Donar->id]) }}">
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
                                     <button class='btn btn-danger btn-xs' style='margin-top: 3px;' onclick='confirm("Are you sure you want to perform this action ?"'><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>

@@ -13,6 +13,10 @@ class AreasModel extends Model
 
     protected $fillable = ['name', 'status', 'created_by', 'updated_by', 'deleted_by', 'deleted_at'];
 
+    public function swdonars(){
+        return $this->hasMany('App\Models\Admin\SWDonarsModel', 'area_id');
+    }
+
     static public function getActiveOnly(){
         return self::where(['status' => 1])->where(['deleted_at' => NULL])->get();
     }
