@@ -22,9 +22,20 @@ var FormControls = function () {
 
     var destroyLineItem = function (itemId) {
         var r = confirm("Are you sure to delete Line Item?");
+        var id = $('#line_item-'+itemId).children().find('input#q_id-'+itemId).val();
         if (r == true) {
             // $('#entry_item-ledger_id-'+itemId).select2(Select2AjaxObj());
-            $('#line_item-'+itemId).remove();
+            $.ajax({
+                method: "POST",
+                url: "qualification_delete",
+                data: { id: id, _token: $('input[name=_token]').val() }
+              })
+                .done(function() {
+                    $('#line_item-'+itemId).remove();
+            })
+                .fail(function(){
+                    alert('Something Went Wrong ! Please Try Again Later');
+                });
             //CalculateTotal();
         }
     }

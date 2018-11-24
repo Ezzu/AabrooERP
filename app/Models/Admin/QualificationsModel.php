@@ -48,7 +48,7 @@ class QualificationsModel extends Model
 
     static public function deleteQualificationsByEmployeeId($employee_id){
         $qualifications = self::where(['employee_id' => $employee_id]);
-        if(count($qualifications)){
+        if(!empty($qualifications)){
             return $qualifications->forceDelete();
         }
         return;

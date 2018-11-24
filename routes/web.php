@@ -40,6 +40,11 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin/'], function () {
     Route::resource('donars', 'Admin\DonarsController');
 
     // ********************************
+    //  Solid Waste Donars Routes
+    // ********************************
+    Route::resource('swdonars', 'Admin\SWDonarsController');
+
+    // ********************************
     //  Areas Routes
     // ********************************
     Route::resource('areas', 'Admin\AreasController');
@@ -95,6 +100,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin/'], function () {
     //  Employees Routes
     // ********************************
     Route::resource('employees', 'Admin\EmployeesController');
+    Route::post('employees/{id}/qualification_delete', ['uses' => 'Admin\EmployeesController@delete_qualification', 'as' => 'qualifications.delete']);
     Route::get('employees/{id}/active', ['uses' => 'Admin\EmployeesController@active', 'as' => 'employees.active']);
     Route::get('employees/{id}/inactive', ['uses' => 'Admin\EmployeesController@inactive', 'as' => 'employees.inactive']);    
 });

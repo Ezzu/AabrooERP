@@ -48,7 +48,7 @@
                         <td>
                             
                             <a href="{{ route('admin.employees.edit', ['id' => $Employee->id]) }}" class='btn btn-xs btn-info' style='margin-top: 3px;'><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
-                            <form action="{{ route('admin.employees.destroy', ['id' => $Employee->id]) }}">
+                            <form action="{{ route('admin.employees.destroy', ['id' => $Employee->id]) }}" method="POST">
                                 {{ method_field('DELETE') }}
                                 {{ csrf_field() }}
                                 <button class='btn btn-danger btn-xs' style='margin-top: 3px;' onclick='confirm("Are you sure you want to perform this action ?"'><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>

@@ -20,6 +20,9 @@
                 <div class="text-danger">{{ $errors->first('job_title_id') }}</div>
             @endif
         </div>
+        <div class="{{ $errors->has('image') ? 'text-danger' : '' }} form-group col-md-3" id="image_div">
+            <img src="{{ isset($Employee) ? asset($Employee->image) : '' }}" style="border: 1px solid #aaa; width: 110px; height: 100px; margin-left: 50px;">
+        </div>
         <div class="{{ $errors->has('date_of_joining') ? 'text-danger' : '' }} form-group col-md-3" id="date_of_joining_div">
             {!! Form::label('date_of_joining', 'DOJ *', ['class' => 'control-label', 'style' => ""]) !!}
             {!! Form::text('date_of_joining', old('date_of_joining') ,['class' => 'form-control datetimepicker']) !!}
@@ -154,7 +157,7 @@
                                         </div>
                                     </td>
                                     <td><button id="line_item-del_btn-{{$counter}}" onclick="FormControls.destroyLineItem('{{$counter}}');" type="button" class="btn btn-block btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
-
+                                    <td><input type="hidden" id="q_id-{{$counter}}" value="{{ $val->id }}"></td>
                                 </tr>
                             @endforeach
                         @endif
@@ -200,6 +203,7 @@
                                 </td>
 
                                 <td><button id="line_item-del_btn-######" onclick="FormControls.destroyLineItem('######');" class="btn btn-block btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
+                                <td><input type="hidden" id="q_id-######" value="not_applicable"></td>
                             </tr>
                         </tbody>
                     </table>

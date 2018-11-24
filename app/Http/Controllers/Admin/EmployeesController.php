@@ -124,8 +124,8 @@ class EmployeesController extends Controller
         
         $data['image_temp'] = '';
         if($request->hasFile('image')){
-            if(file_exists($Student->image)){
-                unlink($Student->image);
+            if(file_exists($Employee->image)){
+                unlink($Employee->image);
             }
             $image_name = time().'_'.str_replace(' ', '_', strtolower($data['image']->getClientOriginalName()));
             $data['image_temp'] = $data['image'];
@@ -154,7 +154,12 @@ class EmployeesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+        $EmployeeModel = EmployeesModel::findOrFail($id);
+        $EmployeeModel->update(['deleted_by' => Auth::user()->id]);
+        $EmployeeModel->delete();        
+        return redirect()->route('admin.employees.index');
+
     }
 
     /**
@@ -169,6 +174,14 @@ class EmployeesController extends Controller
         return view('admin.employees.form' , compact('EmployeesModel'));
         $pdf = PDF::loadView('admin.employees.form', compact('EmployeesModel'));
         // return $pdf->stream(strtolower(str_replace(' ', '_', $StudentsModel->name.'_'.$StudentsModel->roll_no.'_'.$StudentsModel->class)).'.pdf'); 
+
+    }
+
+    public function delete_qualification(Request $request){
+        
+        $data = $request->all();
+        QualificationsModel::findOrFail($data['id'])->forceDelete();
+        return;
 
     }
 

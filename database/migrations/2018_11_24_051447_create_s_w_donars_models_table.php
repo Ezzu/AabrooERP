@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDonarsModelsTable extends Migration
+class CreateSWDonarsModelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,14 @@ class CreateDonarsModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('donars', function (Blueprint $table) {
+        Schema::create('swdonars', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('sponsership_date')->nullable();
             $table->string('donar_name')->nullable();
             $table->string('address')->nullable();
             $table->string('cnic')->nullable();
             $table->unsignedInteger('area_id')->nullable();
             $table->string('phone_no')->nullable();
             $table->string('cell_no')->nullable();
-            $table->string('email')->nullable();
-            $table->integer('sponser_count')->default(0)->nullable();
-            $table->integer('fee_per_child')->nullable();
-            $table->unsignedInteger('payment_type_id')->nullable();
             $table->integer('status')->default(1);
 
             $table->unsignedInteger('created_by')->nullable();
@@ -50,6 +45,6 @@ class CreateDonarsModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('donars_models');
+        Schema::dropIfExists('s_w_donars_models');
     }
 }

@@ -11,7 +11,7 @@ class EmployeesModel extends Model
     use SoftDeletes;
 
     protected $fillable = ['user_id', 'branch_id', 'department_id', 'job_title_id', 'bank_id', 'date_of_joining',
-                            'name', 'gender', 'cnic', 'father_name', 'contact',
+                            'name', 'gender', 'cnic', 'father_name', 'contact', 'image',
                             'email', 'permanent_address', 'temporary_address', 'city',
                             'account_no', 'basic_salary', 'medical_allowance', 'conveyance',
                             'status', 'created_by', 'updated_by', 'deleted_by', 'deleted_at'];
