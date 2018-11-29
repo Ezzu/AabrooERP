@@ -59,13 +59,13 @@ class EmployeesController extends Controller
         $data['created_by'] = Auth::user()->id;
         $data['created_at'] = \Carbon\Carbon::now();
 
-        $image_name = time().'_'.str_replace(' ', '_', strtolower($data['image']->getClientOriginalName()));
+        $image_name = time().'_'.str_replace(' ', '_', str_replace(' ', '-', strtolower($data['image']->getClientOriginalName()) ) );
         $data['image_temp'] = $data['image'];
         $data['image'] = '\images\employees\\'.$image_name;
 
         $Employee = EmployeesModel::create($data);
 
-        $QualificationsModel::addBulkRecords($data['line_items'], $Employee->id);
+        QualificationsModel::addBulkRecords($data['line_items'], $Employee->id);
 
         $data['image_temp']->move('\images\employees', $image_name);
 
@@ -127,7 +127,7 @@ class EmployeesController extends Controller
             if(file_exists($Employee->image)){
                 unlink($Employee->image);
             }
-            $image_name = time().'_'.str_replace(' ', '_', strtolower($data['image']->getClientOriginalName()));
+            $image_name = time().'_'.str_replace(' ', '', str_replace('-', '', strtolower($data['image']->getClientOriginalName() ) ) );
             $data['image_temp'] = $data['image'];
             $data['image'] = 'images/employees/'.$image_name;
         }

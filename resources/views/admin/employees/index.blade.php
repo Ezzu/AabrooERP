@@ -65,7 +65,7 @@
 @section('js')
     <script type="javascript/text" src="{{ asset('js\admin\students\list.js') }}"></script>
     <script>
-        $('.datatables').DataTable({
+        $('#users-table').DataTable({
             // processing: true,
             // serverSide: true,
             // ajax:{

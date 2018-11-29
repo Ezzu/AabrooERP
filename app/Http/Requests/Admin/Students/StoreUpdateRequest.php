@@ -32,7 +32,6 @@ class StoreUpdateRequest extends FormRequest
             'class' => 'required',
             'roll_no' => 'required',
             'shift' => 'required',
-            'image' => 'required',
 
             'father_name' => 'required',
             'father_cnic' => 'required',
@@ -58,7 +57,7 @@ class StoreUpdateRequest extends FormRequest
             'other_income' => 'required',
 
             'guarantor_name' => 'required',
-            'image' => 'required|mimes:jpeg,png|size:100',
+            'image' => 'required|mimes:jpeg,png|max:100',
 
         ];
     }

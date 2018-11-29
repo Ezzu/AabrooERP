@@ -110,7 +110,7 @@ class SWDonarsController extends Controller
      */
     public function destroy($id)
     {
-        
+    
         SWDonarsModel::findOrFail($id)->delete();        
         return redirect()->route('admin.swdonars.index');
 

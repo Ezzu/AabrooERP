@@ -28,7 +28,7 @@ class StoreUpdateRequest extends FormRequest
             'donar_name' => 'required|max:255',
             'address' => 'required|max:255',
             'cnic' => 'required|max:255',
-            'area_id' => 'required',
+            // 'area_id' => 'required',
             'phone_no' => 'required',
             // 'sponser_count' => 'required',
             'fee_per_child' => 'required',

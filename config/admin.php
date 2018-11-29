@@ -102,5 +102,9 @@ return [
         '1' => '1st Division',
         '2' => '2nd Division',
         '3' => '3rd Division'
+    ],
+
+    'employee_type_array' => [
+
     ]
 ];

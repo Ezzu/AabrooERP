@@ -36,7 +36,7 @@
                         <td>{{ $Student->id }}</td>
                         <td>{{ $Student->name }}</td>
                         <td>{{ $Student->father_name }}</td>
-                        <td>{{ \Carbon\Carbon::parse($Student->date_of_birth)->diff(\Carbon\Carbon::now())->format('%y Years') }}</td>
+                        <td>{{ \Carbon\Carbon::parse($Student->date_of_birth)->diffInYears(\Carbon\Carbon::now()) }}</td>
                         <td>{{ Config::get('admin.class_array.'.$Student->class) }}</td>
                         <td>{{ Config::get('admin.shift_array.'.$Student->shift) }}</td>
                         <td>{{ date('F d, Y', strtotime($Student->admission_date)) }}</td>
@@ -63,7 +63,7 @@
 @section('js')
     <script type="javascript/text" src="{{ asset('js\admin\students\list.js') }}"></script>
     <script>
-        $('.datatables').DataTable({
+        $('#users-table').DataTable({
             // processing: true,
             // serverSide: true,
             // ajax:{

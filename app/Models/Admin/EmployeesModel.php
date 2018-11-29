@@ -22,6 +22,10 @@ class EmployeesModel extends Model
         return $this->hasMany('App\Models\Admin\QualificationsModel', 'employee_id');
     }
 
+    public function swemployee(){
+        return $this->hasOne('App\Models\Admin\SWEmployeesModel', 'employee_id');
+    }
+
     static public function getActiveOnly(){
         return self::where(['status' => 1])->get();
     }

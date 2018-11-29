@@ -30,7 +30,10 @@
             @if ($errors->has('gender'))
                 <div class="text-danger">{{ $errors->first('gender') }}</div>
             @endif
-        </div>         
+        </div>
+        <div class="{{ $errors->has('image') ? 'text-danger' : '' }} form-group col-md-3" id="image_div">
+            <img src="{{ isset($Student) ? asset($Student->image) : '' }}" style="border: 1px solid #aaa; width: 90px; height: 80px; margin-left: 50px;" id="image_previewer">
+        </div>  
         <div class="{{ $errors->has('date_of_birth') ? 'text-danger' : '' }} form-group col-md-3" id="date_of_birth_div">
             {!! Form::label('date_of_birth', 'DOB *', ['class' => 'control-label', 'style' => ""]) !!}
             {!! Form::text('date_of_birth', old('date_of_birth') ,['class' => 'form-control']) !!}

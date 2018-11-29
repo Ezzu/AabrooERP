@@ -16,14 +16,14 @@ class CreateEmployeesModelsTable extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id')->nullable();
-            $table->unsignedInteger('branch_id');
-            $table->unsignedInteger('department_id');
-            $table->unsignedInteger('job_title_id');
-            $table->unsignedInteger('bank_id');
+            $table->unsignedInteger('branch_id')->nullable();
+            $table->unsignedInteger('department_id')->nullable();
+            $table->unsignedInteger('job_title_id')->nullable();
+            $table->unsignedInteger('bank_id')->nullable();
 
             $table->string('date_of_joining')->nullable();
             $table->string('name')->nullable();
-            $table->enum('gender', ['male', 'female', 'other'])->nullable();
+            $table->enum('gender', ['1', '2', '3'])->nullable();
             $table->string('cnic')->nullable();
             $table->string('father_name')->nullable();   
             $table->string('contact')->nullable();
@@ -65,6 +65,6 @@ class CreateEmployeesModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employees_models');
+        Schema::dropIfExists('employees');
     }
 }

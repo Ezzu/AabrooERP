@@ -39,6 +39,6 @@ class CreateJobTitlesModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('job_titles_models');
+        Schema::dropIfExists('job_titles');
     }
 }

@@ -45,6 +45,6 @@ class CreateQualificationsModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('banks_models');
+        Schema::dropIfExists('qualifications');
     }
 }

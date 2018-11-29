@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSWDonarsModelsTable extends Migration
+class CreateSWEmployeesModelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,12 @@ class CreateSWDonarsModelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('swdonars', function (Blueprint $table) {
+        Schema::create('swemployees', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('donar_name')->nullable();
-            $table->string('address')->nullable();
-            $table->string('cnic')->nullable();
+            $table->unsignedInteger('employee_id')->nullable();
+            $table->string('emergency_contact')->nullable();
             $table->unsignedInteger('area_id')->nullable();
-            $table->string('phone_no')->nullable();
-            $table->string('cell_no')->nullable();
+            $table->unsignedInteger('day_id')->nullable();
             $table->integer('status')->default(1);
 
             $table->unsignedInteger('created_by')->nullable();
@@ -33,8 +31,9 @@ class CreateSWDonarsModelsTable extends Migration
             $table->foreign('created_by')->references('id')->on('users');
             $table->foreign('updated_by')->references('id')->on('users');
             $table->foreign('deleted_by')->references('id')->on('users');
+            $table->foreign('employee_id')->references('id')->on('employees');
             $table->foreign('area_id')->references('id')->on('areas');
-            $table->foreign('payment_type_id')->references('id')->on('payment_types');
+            $table->foreign('day_id')->references('id')->on('working_days');
         });
     }
 
@@ -45,6 +44,6 @@ class CreateSWDonarsModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('s_w_donars_models');
+        Schema::dropIfExists('swemployees');
     }
 }

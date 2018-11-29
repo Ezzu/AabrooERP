@@ -46,13 +46,15 @@ class StudentsController extends Controller
         $data['created_by'] = Auth::user()->id;
         $data['created_at'] = \Carbon\Carbon::now();
 
+        $data['image_temp'] = '';
+
         $image_name = time().'_'.str_replace(' ', '_', strtolower($data['image']->getClientOriginalName()));
         $data['image_temp'] = $data['image'];
-        $data['image'] = '\images\students\\'.$image_name;
+        $data['image'] = 'images/students/'.$image_name;
 
-        StudentsModel::create($data);
-
-        $request['image_temp']->move('\images\students', $image_name);
+        if($data['image_temp']->move('images/students/', $image_name)){
+            StudentsModel::create($data);
+        }
 
         return redirect()->route('admin.students.index');
     }

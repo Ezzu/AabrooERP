@@ -39,6 +39,6 @@ class CreateDonarsClassModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('donars_class_models');
+        Schema::dropIfExists('donars_class');
     }
 }

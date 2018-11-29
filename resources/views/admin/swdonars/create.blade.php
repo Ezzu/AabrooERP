@@ -10,7 +10,7 @@
     <div class="box box-primary">
         <div class="box-header">
             <h3 class="box-title" style="padding-top: 6px;">Create New Donar</h3>
-            <a class="btn btn-success pull-right" href="{{ route('admin.donars.index') }}">Back</a>
+            <a class="btn btn-success pull-right" href="{{ route('admin.swdonars.index') }}">Back</a>
         </div>
         {!! Form::open(['route' => 'admin.swdonars.store']) !!}
             <div class="box-body table-responsive">

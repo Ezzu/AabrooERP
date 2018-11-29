@@ -31,5 +31,5 @@
 @stop
 
 @section('js')
-
+    <script type="text/javascript" src="{{ asset('js\admin\students\create_modify.js') }}"></script>
 @stop

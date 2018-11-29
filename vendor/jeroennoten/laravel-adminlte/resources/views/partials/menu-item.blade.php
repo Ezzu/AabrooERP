@@ -74,6 +74,7 @@
       <li class="{{ $request->segment(2) == 'banks' ? 'active' : '' }}"><a href="{{ route('admin.banks.index') }}"><i class="fas fa-abc"></i> <span>Manage Banks</span></a></li>
       <li class="{{ $request->segment(2) == 'employees' ? 'active' : '' }}"><a href="{{ route('admin.employees.index') }}"><i class="fas fa-abc"></i> <span>Manage Employees</span></a></li>
       <li class="{{ $request->segment(2) == 'swdonars' ? 'active' : '' }}"><a href="{{ route('admin.swdonars.index') }}"><i class="fas fa-abc"></i> <span>Manage SW Donars</span></a></li>
+      <li class="{{ $request->segment(2) == 'swemployees' ? 'active' : '' }}"><a href="{{ route('admin.swemployees.index') }}"><i class="fas fa-abc"></i> <span>Manage SW Employees</span></a></li>
       <!-- <li><a href="#"><i class="fa fa-link"></i> <span>Another Link</span></a></li>
       <li class="treeview">
         <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>

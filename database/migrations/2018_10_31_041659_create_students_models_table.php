@@ -103,6 +103,6 @@ class CreateStudentsModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('students_models');
+        Schema::dropIfExists('students');
     }
 }

@@ -32,13 +32,13 @@
     @endif
 </div>
 
-<div class="{{ $errors->has('area_id') ? 'text-danger' : '' }} form-group col-md-3" id="area_id_div">
+<!-- <div class="{{ $errors->has('area_id') ? 'text-danger' : '' }} form-group col-md-3" id="area_id_div">
     {!! Form::label('area_id', 'Area *', ['class' => 'control-label', 'style' => ""]) !!}
     {!! Form::select('area_id', $Areas, old('area_id'), ['class' => 'form-control select2']) !!}
     @if ($errors->has('area_id'))
         <div class="text-danger">{{ $errors->first('area_id') }}</div>
     @endif
-</div>
+</div> -->
 
 <div class="{{ $errors->has('phone_no') ? 'text-danger' : '' }} form-group col-md-3" id="phone_no_div">
     {!! Form::label('phone_no', 'Phone No *', ['class' => 'control-label', 'style' => ""]) !!}

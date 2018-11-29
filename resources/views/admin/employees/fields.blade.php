@@ -21,7 +21,7 @@
             @endif
         </div>
         <div class="{{ $errors->has('image') ? 'text-danger' : '' }} form-group col-md-3" id="image_div">
-            <img src="{{ isset($Employee) ? asset($Employee->image) : '' }}" style="border: 1px solid #aaa; width: 110px; height: 100px; margin-left: 50px;">
+            <img src="{{ isset($Employee) ? asset($Employee->image) : '' }}" style="border: 1px solid #aaa; width: 110px; height: 100px; margin-left: 50px;" id="image_previewer">
         </div>
         <div class="{{ $errors->has('date_of_joining') ? 'text-danger' : '' }} form-group col-md-3" id="date_of_joining_div">
             {!! Form::label('date_of_joining', 'DOJ *', ['class' => 'control-label', 'style' => ""]) !!}

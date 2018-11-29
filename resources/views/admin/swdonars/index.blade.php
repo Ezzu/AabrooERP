@@ -3,7 +3,7 @@
 @section('title', 'Aabroo Accounts')
 
 @section('content_header')
-    <h1 style="margin-bottom: 15px;">Donars</h1>
+    <h1 style="margin-bottom: 15px;">SW Donars</h1>
 @stop
 
 @section('content')
@@ -32,12 +32,12 @@
                             <td>{{ $Donar->id }}</td>
                             <td>{{ $Donar->donar_name }}</td>
                             <td>{{ $Donar->phone_no }}</td>
-                            <td>{{ $Donar->area->name }}</td>
+                            <td>{{ isset($Donar->area->name) ? $Donar->area->name : 'Not Specified' }}</td>
                             <td>{{ $Donar->address }}</td>
                             <td>{{ $Donar->created_at }}</td>
                             <td>
                                 <a href="{{ route('admin.swdonars.edit', ['id' => $Donar->id]) }}" class='btn btn-xs btn-info'><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
-                                <form action="{{ route('admin.swdonars.destroy', ['id' => $Donar->id]) }}">
+                                <form action="{{ route('admin.swdonars.destroy', ['id' => $Donar->id]) }}" method="post">
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
                                     <button class='btn btn-danger btn-xs' style='margin-top: 3px;' onclick='confirm("Are you sure you want to perform this action ?"'><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>

@@ -41,6 +41,6 @@ class CreateStudentsDonarsModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('students_donars_models');
+        Schema::dropIfExists('students_donars');
     }
 }

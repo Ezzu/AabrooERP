@@ -31,10 +31,10 @@ class DonarsController extends Controller
     public function create()
     {
         $Areas = AreasModel::pluckActiveOnly();
-        $Areas->prepend('Select an Area');
+        $Areas->prepend('Select an Area', '');
 
         $PaymentTypes = PaymentTypesModel::pluckActiveOnly();
-        $PaymentTypes->prepend('Select a Payment Method');
+        $PaymentTypes->prepend('Select a Payment Method', '');
         
         return view('admin.donars.create', compact('Areas', 'PaymentTypes'));
     }
@@ -80,10 +80,10 @@ class DonarsController extends Controller
         $Donar = DonarsModel::findOrFail($id);
 
         $Areas = AreasModel::pluckActiveOnly();
-        $Areas->prepend('Select an Area');
+        $Areas->prepend('Select an Area', '');
 
         $PaymentTypes = PaymentTypesModel::pluckActiveOnly();
-        $PaymentTypes->prepend('Select a Payment Method');
+        $PaymentTypes->prepend('Select a Payment Method', '');
 
         return view('admin.donars.edit', compact('Donar', 'Areas', 'PaymentTypes'));
 

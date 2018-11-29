@@ -3,7 +3,7 @@
 @section('title', 'Aabroo Accounts')
 
 @section('content_header')
-    <h1 style="margin-bottom: 15px;">Branches</h1>
+    <h1 style="margin-bottom: 15px;">Banks</h1>
 @stop
 
 @section('content')

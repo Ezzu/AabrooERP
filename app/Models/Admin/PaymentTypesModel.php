@@ -22,7 +22,7 @@ class PaymentTypesModel extends Model
     }
 
     static function getPaymentTypeByID($id){
-        return self::find($id)->pluck('name')->first();
+        return self::find($id) ? self::find($id)->name : 'ERROR';
     }
 
 }

@@ -103,4 +103,12 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin/'], function () {
     Route::post('employees/{id}/qualification_delete', ['uses' => 'Admin\EmployeesController@delete_qualification', 'as' => 'qualifications.delete']);
     Route::get('employees/{id}/active', ['uses' => 'Admin\EmployeesController@active', 'as' => 'employees.active']);
     Route::get('employees/{id}/inactive', ['uses' => 'Admin\EmployeesController@inactive', 'as' => 'employees.inactive']);    
+
+        
+    // ********************************
+    //  SW Employees Routes
+    // ********************************
+    Route::resource('swemployees', 'Admin\SWEmployeesController');
+    Route::get('swemployees/{id}/active', ['uses' => 'Admin\SWEmployeesController@active', 'as' => 'swemployees.active']);
+    Route::get('swemployees/{id}/inactive', ['uses' => 'Admin\SWEmployeesController@inactive', 'as' => 'swemployeescd.inactive']);    
 });

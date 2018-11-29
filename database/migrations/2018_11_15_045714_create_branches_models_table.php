@@ -41,6 +41,6 @@ class CreateBranchesModelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('branches_models');
+        Schema::dropIfExists('branches');
     }
 }

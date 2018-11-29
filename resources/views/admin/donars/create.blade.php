@@ -28,7 +28,7 @@
         var FormControls = function(){
             $('.select2').select2();
             $( ".datetimepicker" ).datepicker({
-                format: "mm-dd-yyyy",
+                format: "yyyy-mm-dd",
                 weekStart: 0,
                 calendarWeeks: true,
                 autoclose: true,
