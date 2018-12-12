@@ -12,11 +12,11 @@
 
         <div class="{{ $errors->has('admission_date') ? 'text-danger' : '' }} form-group col-md-3" id="admission_date_div">
             {!! Form::label('admission_date', 'Admission Date *', ['class' => 'control-label', 'style' => ""]) !!}
-            {!! Form::text('admission_date', old('admission_date') ,['class' => 'form-control datetimepicker']) !!}
+            {!! Form::text('admission_date', old('admission_date') ,['class' => 'form-control datetimepicker datemask', 'placeholder' => 'e.g 2010-06-21']) !!}
             @if ($errors->has('admission_date'))
                 <div class="text-danger">{{ $errors->first('admission_date') }}</div>
             @endif
-        </div>      
+        </div> 
         <div class="{{ $errors->has('name') ? 'text-danger' : '' }} form-group col-md-3" id="name_div">
             {!! Form::label('name', 'Student Name *', ['class' => 'control-label', 'style' => ""]) !!}
             {!! Form::text('name', old('name') ,['class' => 'form-control']) !!}
@@ -36,14 +36,14 @@
         </div>  
         <div class="{{ $errors->has('date_of_birth') ? 'text-danger' : '' }} form-group col-md-3" id="date_of_birth_div">
             {!! Form::label('date_of_birth', 'DOB *', ['class' => 'control-label', 'style' => ""]) !!}
-            {!! Form::text('date_of_birth', old('date_of_birth') ,['class' => 'form-control']) !!}
+            {!! Form::text('date_of_birth', old('date_of_birth') ,['class' => 'form-control datemask', 'placeholder' => 'e.g 2010-06-21']) !!}
             @if ($errors->has('date_of_birth'))
                 <div class="text-danger">{{ $errors->first('date_of_birth') }}</div>
             @endif
         </div>
         <div class="{{ $errors->has('cnic') ? 'text-danger' : '' }} form-group col-md-3" id="cnic_div">
-            {!! Form::label('cnic', 'CNIC *', ['class' => 'control-label', 'style' => ""]) !!}
-            {!! Form::number('cnic', old('cnic') ,['class' => 'form-control']) !!}
+            {!! Form::label('cnic', 'CNIC *', ['class' => 'control-label']) !!}
+            {!! Form::text('cnic', old('cnic') ,['class' => 'form-control cnicmask', 'placeholder' => 'e.g 35202-1234567-1']) !!}
             @if ($errors->has('cnic'))
                 <div class="text-danger">{{ $errors->first('cnic') }}</div>
             @endif
@@ -62,11 +62,11 @@
                 <div class="text-danger">{{ $errors->first('roll_no') }}</div>
             @endif
         </div>  
-        <div class="{{ $errors->has('shift') ? 'text-danger' : '' }} form-group col-md-3" id="shift_div">
-            {!! Form::label('shift', 'Shift *', ['class' => 'control-label', 'style' => ""]) !!}
-            {!! Form::select('shift', array('' => 'Select a Shift') + \Config::get('admin.shift_array'), old('shift'), ['class' => 'form-control select2']) !!}
-            @if ($errors->has('shift'))
-                <div class="text-danger">{{ $errors->first('shift') }}</div>
+        <div class="{{ $errors->has('campus') ? 'text-danger' : '' }} form-group col-md-3" id="campus_div">
+            {!! Form::label('campus', 'Campus *', ['class' => 'control-label', 'style' => ""]) !!}
+            {!! Form::select('campus', $Campuses, old('campus'), ['class' => 'form-control select2']) !!}
+            @if ($errors->has('campus'))
+                <div class="text-danger">{{ $errors->first('campus') }}</div>
             @endif
         </div> 
         <div class="{{ $errors->has('image') ? 'text-danger' : '' }} form-group col-md-3" id="image_div">

@@ -31,5 +31,6 @@
 @stop
 
 @section('js')
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
     <script type="text/javascript" src="{{ asset('js\admin\students\create_modify.js') }}"></script>
 @stop

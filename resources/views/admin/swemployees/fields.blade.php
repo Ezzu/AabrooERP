@@ -18,7 +18,7 @@
 
 <div class="{{ $errors->has('area_id') ? 'text-danger' : '' }} form-group col-md-3" id="area_id_div">
     {!! Form::label('area_id', 'Area *', ['class' => 'control-label', 'style' => ""]) !!}
-    {!! Form::select('area_id', $Areas, old('area_id'), ['class' => 'form-control select2']) !!}
+    {!! Form::select('area_id[]', $Areas, old('area_id'), ['class' => 'form-control select2', 'multiple' => 'true']) !!}
     @if ($errors->has('area_id'))
         <div class="text-danger">{{ $errors->first('area_id') }}</div>
     @endif

@@ -23,13 +23,16 @@ class CreateStudentsModelsTable extends Migration
             $table->unsignedInteger('class')->nullable();
             $table->unsignedInteger('roll_no')->nullable();
             $table->unsignedInteger('shift')->nullable();
+            $table->unsignedInteger('campus')->nullable();
 
             $table->string('father_name')->nullable();
+            $table->date('father_date_of_birth')->nullable();
             $table->string('father_cnic')->nullable();
             $table->unsignedInteger('father_education')->nullable();
             $table->unsignedInteger('father_professional_status')->nullable();
 
             $table->string('mother_name')->nullable();
+            $table->date('mother_date_of_birth')->nullable();
             $table->string('mother_cnic')->nullable();
             $table->unsignedInteger('mother_education')->nullable();
             $table->unsignedInteger('mother_professional_status')->nullable();
@@ -90,6 +93,7 @@ class CreateStudentsModelsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
+            $table->foreign('campus')->references('id')->on('branches');
             $table->foreign('created_by')->references('id')->on('users');
             $table->foreign('updated_by')->references('id')->on('users');
             $table->foreign('deleted_by')->references('id')->on('users');

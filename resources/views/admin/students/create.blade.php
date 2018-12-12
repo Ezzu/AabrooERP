@@ -32,4 +32,11 @@
 
 @section('js')
     <script type="text/javascript" src="{{ asset('js\admin\students\create_modify.js') }}"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
+    <script>
+        $(".cnicmask").inputmask("99999-9999999-9");
+        $(".cellmask").inputmask("0399-9999999");
+        $(".datemask").inputmask("9999-99-99");
+        $('.select2').select2();
+    </script>
 @stop

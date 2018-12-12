@@ -17,6 +17,10 @@ class AreasModel extends Model
         return $this->hasMany('App\Models\Admin\SWDonarsModel', 'area_id');
     }
 
+    public function swemployees(){
+        return $this->belongsToMany('App\Models\Admin\SWEmployeesModel', 'swemployees_area', 'employee_id', 'area_id');
+    }
+
     static public function getActiveOnly(){
         return self::where(['status' => 1])->where(['deleted_at' => NULL])->get();
     }

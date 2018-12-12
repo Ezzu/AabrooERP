@@ -10,14 +10,14 @@
       
         <div class="{{ $errors->has('mother_education') ? 'text-danger' : '' }} form-group col-md-3" id="eyesight_div">
             {!! Form::label('eyesight', 'Eyesight', ['class' => 'control-label', 'style' => ""]) !!}
-            {!! Form::select('eyesight', array('' => 'Select a Status') + \Config::get('admin.normal_week_array'), old('mother_education'), ['class' => 'form-control select2']) !!}
+            {!! Form::select('eyesight', array('' => 'Select a Status') + \Config::get('admin.normal_week_array'), old('mother_education'), ['class' => 'form-control']) !!}
             @if ($errors->has('eyesight'))
                 <div class="text-danger">{{ $errors->first('eyesight') }}</div>
             @endif
         </div>    
         <div class="{{ $errors->has('mother_education') ? 'text-danger' : '' }} form-group col-md-3" id="hearing_div">
             {!! Form::label('hearing', 'Hearing', ['class' => 'control-label', 'style' => ""]) !!}
-            {!! Form::select('hearing', array('' => 'Select a Status') + \Config::get('admin.normal_week_array'), old('mother_education'), ['class' => 'form-control select2']) !!}
+            {!! Form::select('hearing', array('' => 'Select a Status') + \Config::get('admin.normal_week_array'), old('mother_education'), ['class' => 'form-control']) !!}
             @if ($errors->has('hearing'))
                 <div class="text-danger">{{ $errors->first('hearing') }}</div>
             @endif

@@ -13,7 +13,11 @@ class WorkingDaysModel extends Model
     protected $fillable = ['name', 'status', 'created_by', 'updated_by', 'deleted_by', 'deleted_at'];
 
     protected $table = "working_days";
-        
+    
+    public function swemployee(){
+        return $this->hasOne('App\Models\Admin\SWEmployeesModel', 'day_id');
+    }
+    
     static public function getActiveOnly(){
         return self::where(['status' => 1])->get();
     }

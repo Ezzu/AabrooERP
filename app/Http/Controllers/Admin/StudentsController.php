@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Admin\Students\StoreUpdateRequest;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\StudentsModel;
+use App\Models\Admin\BranchesModel;
 use PDF;
 use Auth;
 
@@ -30,7 +31,12 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        return view('admin.students.create');
+
+        $Campuses = BranchesModel::pluckActiveOnly();
+        $Campuses->prepend('Select a Campus', '');
+
+        return view('admin.students.create', compact('Campuses'));
+
     }
 
     /**
@@ -78,9 +84,12 @@ class StudentsController extends Controller
      */
     public function edit($id)
     {
-        
+
+        $Campuses = BranchesModel::pluckActiveOnly();
+        $Campuses->prepend('Select a Campus', '');   
         $Student = StudentsModel::findOrFail($id);
-        return view('admin.students.edit', compact('Student'));
+
+        return view('admin.students.edit', compact('Student', 'Campuses'));
 
     }
 
@@ -142,8 +151,8 @@ class StudentsController extends Controller
 
         $StudentsModel = StudentsModel::find($id);
         return view('admin.students.form' , compact('StudentsModel'));
-        $pdf = PDF::loadView('admin.students.form', compact('StudentsModel'));
-        // return $pdf->stream(strtolower(str_replace(' ', '_', $StudentsModel->name.'_'.$StudentsModel->roll_no.'_'.$StudentsModel->class)).'.pdf'); 
+        // $pdf = PDF::loadView('admin.students.form', compact('StudentsModel'));
+        // return $pdf->download(strtolower(str_replace(' ', '_', $StudentsModel->name.'_'.$StudentsModel->roll_no.'_'.$StudentsModel->class)).'.pdf'); 
 
     }
 

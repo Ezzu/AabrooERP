@@ -38,7 +38,7 @@ class SWEmployeesController extends Controller
         $Employees = EmployeesModel::pluckActiveOnly();
         $Employees->prepend('Select an Employee', '');
         $Areas = AreasModel::pluckActiveOnly();
-        $Areas->prepend('Select an Area', '');
+        // $Areas->prepend('Select an Area', '');
         $Days = WorkingDaysModel::pluckActiveOnly();
         $Days->prepend('Select a Day', '');
         return view('admin.swemployees.create', compact('Employees', 'Areas', 'Days'));
@@ -57,7 +57,10 @@ class SWEmployeesController extends Controller
         $data['created_by'] = Auth::user()->id;
         $data['created_at'] = \Carbon\Carbon::now();
 
-        SWEmployeesModel::create($data);
+        $employee = SWEmployeesModel::create($data);
+        if($employee){
+            $employee->areas()->attach($data['area_id']);
+        }
 
         return redirect()->route('admin.swemployees.index');
     }

@@ -24,7 +24,7 @@
         </div>
         <div class="{{ $errors->has('guarantor_cnic') ? 'text-danger' : '' }} form-group col-md-3" id="guarantor_cnic_div">
             {!! Form::label('guarantor_cnic', 'CNIC', ['class' => 'control-label', 'style' => ""]) !!}
-            {!! Form::number('guarantor_cnic', old('guarantor_cnic') ,['class' => 'form-control']) !!}
+            {!! Form::text('guarantor_cnic', old('guarantor_cnic') ,['class' => 'form-control cnicmask', 'placeholder' => 'e.g 35202-1234567-1']) !!}
             @if ($errors->has('guarantor_cnic'))
                 <div class="text-danger">{{ $errors->first('guarantor_cnic') }}</div>
             @endif
@@ -38,7 +38,7 @@
         </div>
         <div class="{{ $errors->has('cell_no') ? 'text-danger' : '' }} form-group col-md-3" id="guarantor_contact_div">
             {!! Form::label('guarantor_contact', 'Contact', ['class' => 'control-label', 'style' => ""]) !!}
-            {!! Form::number('guarantor_contact', old('guarantor_contact') ,['class' => 'form-control']) !!}
+            {!! Form::number('guarantor_contact', old('guarantor_contact') ,['class' => 'form-control  cellmask']) !!}
             @if ($errors->has('guarantor_contact'))
                 <div class="text-danger">{{ $errors->first('guarantor_contact') }}</div>
             @endif

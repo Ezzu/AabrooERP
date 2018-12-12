@@ -24,7 +24,7 @@
         </div>
         <div class="{{ $errors->has('cell_no') ? 'text-danger' : '' }} form-group col-md-3" id="cell_no_div">
             {!! Form::label('cell_no', 'Cell No *', ['class' => 'control-label', 'style' => ""]) !!}
-            {!! Form::number('cell_no', old('cell_no') ,['class' => 'form-control']) !!}
+            {!! Form::text('cell_no', old('cell_no') ,['class' => 'form-control cellmask']) !!}
             @if ($errors->has('cell_no'))
                 <div class="text-danger">{{ $errors->first('cell_no') }}</div>
             @endif
@@ -52,42 +52,42 @@
         </div>
         <div class="{{ $errors->has('religion') ? 'text-danger' : '' }} form-group col-md-3" id="religion_div">
             {!! Form::label('religion', 'Religion *', ['class' => 'control-label', 'style' => ""]) !!}
-            {!! Form::select('religion', array('' => 'Select a Religion') + \Config::get('admin.religion_array'), old('religion'), ['class' => 'form-control select2']) !!}
+            {!! Form::select('religion', array('' => 'Select a Religion') + \Config::get('admin.religion_array'), old('religion'), ['class' => 'form-control']) !!}
             @if ($errors->has('religion'))
                 <div class="text-danger">{{ $errors->first('religion') }}</div>
             @endif
         </div> 
         <div class="{{ $errors->has('guardian_occupation') ? 'text-danger' : '' }} form-group col-md-3" id="guardian_occupation_div">
             {!! Form::label('guardian_occupation', 'Occupation *', ['class' => 'control-label', 'style' => ""]) !!}
-            {!! Form::select('guardian_occupation', array('' => 'Select an Occupation') + \Config::get('admin.occupation_array'), old('guardian_occupation'), ['class' => 'form-control select2']) !!}
+            {!! Form::select('guardian_occupation', array('' => 'Select an Occupation') + \Config::get('admin.occupation_array'), old('guardian_occupation'), ['class' => 'form-control']) !!}
             @if ($errors->has('guardian_occupation'))
                 <div class="text-danger">{{ $errors->first('guardian_occupation') }}</div>
             @endif
         </div> 
         <div class="{{ $errors->has('residential_status') ? 'text-danger' : '' }} form-group col-md-3" id="residential_status">
             {!! Form::label('residential_status', 'Residential Status *', ['class' => 'control-label', 'style' => ""]) !!}
-            {!! Form::select('residential_status', array('' => 'Select a Status') + \Config::get('admin.residential_status_array'), old('residential_status'), ['class' => 'form-control select2']) !!}
+            {!! Form::select('residential_status', array('' => 'Select a Status') + \Config::get('admin.residential_status_array'), old('residential_status'), ['class' => 'form-control']) !!}
             @if ($errors->has('residential_status'))
                 <div class="text-danger">{{ $errors->first('residential_status') }}</div>
             @endif
         </div> 
         <div class="{{ $errors->has('father_income') ? 'text-danger' : '' }} form-group col-md-3" id="father_income">
             {!! Form::label('father_income', 'Father Income *', ['class' => 'control-label', 'style' => ""]) !!}
-            {!! Form::select('father_income', array('' => 'Select a Range') + \Config::get('admin.income_array'), old('father_income'), ['class' => 'form-control select2']) !!}
+            {!! Form::select('father_income', array('' => 'Select a Range') + \Config::get('admin.income_array'), old('father_income'), ['class' => 'form-control']) !!}
             @if ($errors->has('father_income'))
                 <div class="text-danger">{{ $errors->first('father_income') }}</div>
             @endif
         </div> 
         <div class="{{ $errors->has('father_income') ? 'text-danger' : '' }} form-group col-md-3" id="mother_income">
             {!! Form::label('mother_income', 'Mother Income *', ['class' => 'control-label', 'style' => ""]) !!}
-            {!! Form::select('mother_income', array('' => 'Select a Range') + \Config::get('admin.income_array'), old('mother_income'), ['class' => 'form-control select2']) !!}
+            {!! Form::select('mother_income', array('' => 'Select a Range') + \Config::get('admin.income_array'), old('mother_income'), ['class' => 'form-control']) !!}
             @if ($errors->has('mother_income'))
                 <div class="text-danger">{{ $errors->first('mother_income') }}</div>
             @endif
         </div>    
         <div class="{{ $errors->has('other_income') ? 'text-danger' : '' }} form-group col-md-3" id="other_income">
             {!! Form::label('other_income', 'Other Income *', ['class' => 'control-label', 'style' => ""]) !!}
-            {!! Form::select('other_income', array('' => 'Select a Range') + \Config::get('admin.income_array'), old('other_income'), ['class' => 'form-control select2']) !!}
+            {!! Form::select('other_income', array('' => 'Select a Range') + \Config::get('admin.income_array'), old('other_income'), ['class' => 'form-control']) !!}
             @if ($errors->has('other_income'))
                 <div class="text-danger">{{ $errors->first('other_income') }}</div>
             @endif

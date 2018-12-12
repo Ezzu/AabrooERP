@@ -21,7 +21,7 @@
 
                 <!-- Students Information -->
 
-                <tr>
+                <tr style="width: 80%; background: rgb(10,111,183);">
                     <th>
                         <p style='margin: 10px; font-weight: bold;'>Student Information</p>
                     </th>

@@ -34,4 +34,8 @@ class EmployeesModel extends Model
         return self::where(['status' => 1])->pluck('name', 'id');
     }
 
+    static public function getEmployeeNameById($employee_id){
+        return self::findOrFail($employee_id)->name;
+    }
+
 }

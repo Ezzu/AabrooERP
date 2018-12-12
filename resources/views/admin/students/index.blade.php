@@ -22,7 +22,7 @@
                         <th>Father Name</th>
                         <th>Age</th>
                         <th>Class</th>
-                        <th>Shift</th>
+                        <th>Campus</th>
                         <th>Admission Date</th>
                         <th>Contact</th>
                         <th>Address</th>
@@ -38,7 +38,7 @@
                         <td>{{ $Student->father_name }}</td>
                         <td>{{ \Carbon\Carbon::parse($Student->date_of_birth)->diffInYears(\Carbon\Carbon::now()) }}</td>
                         <td>{{ Config::get('admin.class_array.'.$Student->class) }}</td>
-                        <td>{{ Config::get('admin.shift_array.'.$Student->shift) }}</td>
+                        <td>{{ \App\Models\Admin\BranchesModel::find($Student->campus)->name }}</td>
                         <td>{{ date('F d, Y', strtotime($Student->admission_date)) }}</td>
                         <td>{{ $Student->cell_no }}</td>
                         <td>{{ $Student->permanent_address }}</td>

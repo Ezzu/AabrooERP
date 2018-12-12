@@ -111,4 +111,12 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin/'], function () {
     Route::resource('swemployees', 'Admin\SWEmployeesController');
     Route::get('swemployees/{id}/active', ['uses' => 'Admin\SWEmployeesController@active', 'as' => 'swemployees.active']);
     Route::get('swemployees/{id}/inactive', ['uses' => 'Admin\SWEmployeesController@inactive', 'as' => 'swemployeescd.inactive']);    
+
+
+    // ********************************
+    //  SW Employees Routes
+    // ********************************
+    Route::get('swreport/index', ['uses' => 'Admin\SWReportController@index', 'as' => 'swreport.index']);
+    Route::post('swreport/search', ['uses' => 'Admin\SWReportController@fetchFilterRecord', 'as' => 'swreport.search']);
+
 });

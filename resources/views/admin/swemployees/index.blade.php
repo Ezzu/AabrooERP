@@ -20,7 +20,7 @@
                         <th>ID</td>
                         <th>Employee Name</th>
                         <th>Contact</th>
-                        <th>Area</th>
+                        <th>Area(s)</th>
                         <th>Day</th>
                         <th>Created At</th>
                         <th>Actions</th>
@@ -30,9 +30,19 @@
                     @foreach($SWEmployees as $Employee)
                         <tr>
                             <td>{{ $Employee->id }}</td>
-                            <td>{{ $Employee->employee_id }}</td>
+                            <td>{{ App\Models\Admin\EmployeesModel::getEmployeeNameById($Employee->employee_id) }}</td>
                             <td>{{ $Employee->emergency_contact }}</td>
-                            <td>{{ isset($Employee->area->name) ? $Employee->area->name : 'Not Specified' }}</td>
+                            <td>
+                                @if($Employee->areas)
+                                    <ol>
+                                        @foreach($Employee->areas as $employee_area)
+                                            <li>{{ $employee_area->name }}</li>
+                                        @endforeach
+                                    </ol>
+                                @else
+                                    'Not Specified'
+                                @endif
+                            </td>
                             <td>{{ isset($Employee->working_day->name) ? $Employee->working_day->name : 'Not Specified' }}</td>
                             <td>{{ $Employee->created_at }}</td>
                             <td>

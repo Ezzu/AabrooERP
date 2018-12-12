@@ -38,20 +38,24 @@ var FormControls = function () {
     var destroyLineItem = function (itemId) {
         var r = confirm("Are you sure to delete Line Item?");
         var id = $('#line_item-'+itemId).children().find('input#q_id-'+itemId).val();
+        var degree = $('#line_item-title_id-'+id).val();
         if (r == true) {
-            // $('#entry_item-ledger_id-'+itemId).select2(Select2AjaxObj());
-            $.ajax({
-                method: "POST",
-                url: "qualification_delete",
-                data: { id: id, _token: $('input[name=_token]').val() }
-              })
-                .done(function() {
-                    $('#line_item-'+itemId).remove();
-            })
+            if(degree){
+                // $('#entry_item-ledger_id-'+itemId).select2(Select2AjaxObj());
+                $.ajax({
+                    method: "POST",
+                    url: "qualification_delete",
+                    data: { id: id, _token: $('input[name=_token]').val() }
+                })
+                    .done(function() {
+                        console.log('Done');
+                })
                 .fail(function(){
                     alert('Something Went Wrong ! Please Try Again Later');
                 });
-            //CalculateTotal();
+                //CalculateTotal();
+            }
+            $('#line_item-'+itemId).remove();
         }
     }
 

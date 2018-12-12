@@ -17,7 +17,6 @@ class CreateSWEmployeesModelsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('employee_id')->nullable();
             $table->string('emergency_contact')->nullable();
-            $table->unsignedInteger('area_id')->nullable();
             $table->unsignedInteger('day_id')->nullable();
             $table->integer('status')->default(1);
 
@@ -32,7 +31,6 @@ class CreateSWEmployeesModelsTable extends Migration
             $table->foreign('updated_by')->references('id')->on('users');
             $table->foreign('deleted_by')->references('id')->on('users');
             $table->foreign('employee_id')->references('id')->on('employees');
-            $table->foreign('area_id')->references('id')->on('areas');
             $table->foreign('day_id')->references('id')->on('working_days');
         });
     }

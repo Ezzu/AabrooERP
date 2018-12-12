@@ -10,7 +10,7 @@ class StudentsModel extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name', 'admission_date', 'date_of_birth', 'gender', 'cnic', 'age', 'class', 'roll_no', 'shift',
+    protected $fillable = ['name', 'admission_date', 'date_of_birth', 'gender', 'cnic', 'age', 'class', 'roll_no', 'shift', 'campus',
                             'father_name', 'father_cnic', 'father_education', 'father_professional_status',
                             'mother_name', 'mother_cnic', 'mother_education', 'mother_professional_status',
                             'permanent_address', 'phone_no', 'cell_no',
