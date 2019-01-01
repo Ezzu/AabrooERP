@@ -16,7 +16,7 @@
                 //     leftColumns: 2
                 // },
                 // scrollX: true,
-                paging: false,
+                // paging: false,
                 searching: false,
                 ordering:  false,
                 info: false,

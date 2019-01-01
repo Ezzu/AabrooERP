@@ -86,6 +86,7 @@ class SWEmployeesController extends Controller
     {
         
         $SWEmployee = SWEmployeesModel::findOrFail($id);
+        $SWEmployee['area_id'] = $SWEmployee->areas;
         $Employees = EmployeesModel::pluckActiveOnly();
         $Employees->prepend('Select an Employee', '');
         $Areas = AreasModel::pluckActiveOnly();

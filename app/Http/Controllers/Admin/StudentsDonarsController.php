@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin\StudentsDonarsModel;
 use App\Models\Admin\StudentsModel;
 use App\Models\Admin\DonarsModel;
+use App\Models\Admin\DonarPaymentsModel;
 use App\Http\Requests\Admin\StudentsDonars\StoreUpdateRequest;
 use Auth;
 
@@ -55,7 +56,8 @@ class StudentsDonarsController extends Controller
         $students = $data['student_id'];
         foreach($students as $student){
             $data['student_id'] = $student;
-            StudentsDonarsModel::create($data);
+            $sponsership = StudentsDonarsModel::create($data);
+            DonarPaymentsModel::create(['sponsership_id' => $sponsership->id, 'payment_status' => 1]);
         }
 
         $count = DonarsModel::getSponserCountById($data['donar_id']);

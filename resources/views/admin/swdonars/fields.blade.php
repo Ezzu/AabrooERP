@@ -16,14 +16,6 @@
     @endif
 </div>
 
-<div class="{{ $errors->has('cnic') ? 'text-danger' : '' }} form-group col-md-3" id="cnic_div">
-    {!! Form::label('cnic', 'CNIC', ['class' => 'control-label', 'style' => ""]) !!}
-    {!! Form::text('cnic', old('cnic'), ['class' => 'form-control']) !!}
-    @if ($errors->has('cnic'))
-        <div class="text-danger">{{ $errors->first('cnic') }}</div>
-    @endif
-</div>
-
 <div class="{{ $errors->has('area_id') ? 'text-danger' : '' }} form-group col-md-3" id="area_id_div">
     {!! Form::label('area_id', 'Area *', ['class' => 'control-label', 'style' => ""]) !!}
     {!! Form::select('area_id', $Areas, old('area_id'), ['class' => 'form-control select2']) !!}
@@ -45,5 +37,13 @@
     {!! Form::text('cell_no', old('cell_no'), ['class' => 'form-control']) !!}
     @if ($errors->has('cell_no'))
         <div class="text-danger">{{ $errors->first('cell_no') }}</div>
+    @endif
+</div>
+
+<div class="{{ $errors->has('cnic') ? 'text-danger' : '' }} form-group col-md-6" id="cnic_div">
+    {!! Form::label('cnic', 'Remarks', ['class' => 'control-label', 'style' => ""]) !!}
+    {!! Form::text('cnic', old('cnic'), ['class' => 'form-control']) !!}
+    @if ($errors->has('cnic'))
+        <div class="text-danger">{{ $errors->first('cnic') }}</div>
     @endif
 </div>

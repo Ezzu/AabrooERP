@@ -22,12 +22,32 @@ class StudentsDonarsModel extends Model
         return $this->belongsTo('App\Models\Admin\StudentsModel', 'student_id');
     }
 
+    public function donar_payments(){
+        return $this->hasMany('App\Models\Admin\DonarPaymentsModel', 'sponsership_id');
+    }
+
     static public function getActiveOnly(){
         return self::where(['deleted_at' => NULL])->get();
     }
 
     static public function getSponserCountByDonarId($donar_id){
         return self::where(['donar_id' => $donar_id])->get() ? self::where(['donar_id' => $donar_id])->get()->count() : 0;
+    }
+
+    static public function getGroupBySponserships(){
+        $results = [];
+        $ids = self::getDistinctDonarIds();
+        if($ids){
+            $ids = $ids[0];
+            foreach($ids as $id){
+                $results[$id] = self::where('donar_id', $id)->get()->toArray();
+            }
+        }
+        return $results;
+    }
+
+    static public function getDistinctDonarIds(){
+        return self::selectRaw('distinct donar_id')->get()->toArray();
     }
     
 }

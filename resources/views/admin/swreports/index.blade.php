@@ -21,9 +21,9 @@
         </div>
 
         <div class="form-group col-md-3 @if($errors->has('employee_id')) has-error @endif" id="employee_id_div">
-            {!! Form::label('employee_id', 'Employees *', ['class' => 'control-label']) !!}
-            {!! Form::select('employee_id[]', $Employees, old('employee_id'),
-            ['class' => 'form-control select2'  ,'id' => 'employee_id', 'multiple' => 'multiple']) !!}
+            {!! Form::label('employee_id', 'Employee *', ['class' => 'control-label']) !!}
+            {!! Form::select('employee_id', $Employees, old('employee_id'),
+            ['class' => 'form-control select2'  ,'id' => 'employee_id']) !!}
         </div>
 
         <button id="search_button" style="margin-top: 25px;" class="btn  btn-sm btn-flat btn-primary"><b>&nbsp;Search </b> </button>
@@ -68,6 +68,7 @@
                                            <th>{{ $date_day[0] }}</th>
                                         @endforeach
                                     </tr>
+                                    <?php $count=0; ?>
                                     @foreach(array_keys($Reports['donars']) as $area)
                                         <tr>
                                             <td style='background: #666; color: white;'>{{ $area }}</td>
@@ -78,11 +79,12 @@
                                         @if($Reports['donars'][$area])
                                             @foreach($Reports['donars'][$area] as $donar)
                                                 <tr>
-                                                    <td>{{ $donar->id }}</td>
+                                                    <td>{{ strval(++$count) }}</td>
                                                     <td>{{ $donar->donar_name }}</td>
                                                     <td>{{ $donar->address }}</td>
-                                                    <td>{{ $donar->phone_no }}</td>
-                                                    @for($i=0; $i<=count($Reports['dates']); $i++)
+                                                    <td>@if($donar->phone_no) {{ strval($donar->phone_no) }} @else {{ strval($donar->cell_no) }} @endif</td>
+                                                    <td>{{ $donar->cnic }}</td>
+                                                    @for($i=0; $i < count($Reports['dates']); $i++)
                                                         <td>&nbsp;</td>
                                                     @endfor
                                                 </tr>

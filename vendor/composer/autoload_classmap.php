@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Exceptions/Console/Kernel.php',
+    'App\\DonarPaymentsModel' => $baseDir . '/app/DonarPaymentsModel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\Admin\\AreasController' => $baseDir . '/app/Http/Controllers/Admin/AreasController.php',
     'App\\Http\\Controllers\\Admin\\BanksController' => $baseDir . '/app/Http/Controllers/Admin/BanksController.php',

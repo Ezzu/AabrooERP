@@ -69,6 +69,15 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin/'], function () {
     Route::post('students_donars/datatables', ['uses' => 'Admin\StudentsDonarsController@datatables', 'as' => 'students_donars.datatables']);
 
     // ********************************
+    //  Donar Payments Routes
+    // ********************************
+    Route::resource('donar_payments', 'Admin\DonarPaymentsController');
+    Route::post('donar_payments/datatables', ['uses' => 'Admin\DonarPaymentsController@datatables', 'as' => 'donar_payments.datatables']);
+    Route::get('donar_payments/{id}/active', ['uses' => 'Admin\DonarPaymentsController@active', 'as' => 'donar_payments.active']);
+    Route::get('donar_payments/{id}/inactive', ['uses' => 'Admin\DonarPaymentsController@inactive', 'as' => 'donar_payments.inactive']);  
+    Route::post('donar_payments/filter', ['uses' => 'Admin\DonarPaymentsController@fetchFilterRecords', 'as' => 'donar_payments.filter']);  
+
+    // ********************************
     //  Branches Routes
     // ********************************
     Route::resource('branches', 'Admin\BranchesController');

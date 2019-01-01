@@ -24,5 +24,16 @@
 @stop
 
 @section('js')
-    <script src=""></script>
+    <script type="javascript/text" src="{{ asset('js\admin\swdonars\list.js') }}"></script>
+    <script>
+        var FormControls = function(){
+            $('#users-table').DataTable();
+            $('.select2').select2();
+
+        }();
+
+        $(document).ready(function(){
+            FormControls.init();
+        });
+    </script>
 @stop

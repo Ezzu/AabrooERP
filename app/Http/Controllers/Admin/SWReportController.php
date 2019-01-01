@@ -52,7 +52,7 @@ class SWReportController extends Controller
         }
 
         $data['year'] = '20'.$data['year'];
-        $swemployee = SWEmployeesModel::getSWEmployeeByEmployeeId($data['employee_id']);
+        $swemployee = SWEmployeesModel::findOrFail($data['employee_id']);
         $Reports = [];
 
         if($swemployee){

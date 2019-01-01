@@ -67,7 +67,8 @@
       <li class="{{ $request->segment(2) == 'donars_class' ? 'active' : '' }}"><a href="{{ route('admin.donars_class.index') }}"><i class="fas fa-abc"></i> <span>Manage Donars Class</span></a></li>
       <li class="{{ $request->segment(2) == 'donars' ? 'active' : '' }}"><a href="{{ route('admin.donars.index') }}"><i class="fas fa-abc"></i> <span>Manage Donars</span></a></li>
       <li class="{{ $request->segment(2) == 'students' ? 'active' : '' }}"><a href="{{ route('admin.students.index') }}"><i class="fas fa-abc"></i> <span>Manage Students</span></a></li>
-      <li class="{{ $request->segment(2) == 'danors_students' ? 'active' : '' }}"><a href="{{ route('admin.students_donars.index') }}"><i class="fas fa-abc"></i> <span>Students Sponsership</span></a></li>
+      <li class="{{ $request->segment(2) == 'donars_students' ? 'active' : '' }}"><a href="{{ route('admin.students_donars.index') }}"><i class="fas fa-abc"></i> <span>Students Sponsership</span></a></li>
+      <li class="{{ $request->segment(2) == 'donar_payments' ? 'active' : '' }}"><a href="{{ route('admin.donar_payments.index') }}"><i class="fas fa-abc"></i> <span>Donar Payments</span></a></li>
       <li class="{{ $request->segment(2) == 'branches' ? 'active' : '' }}"><a href="{{ route('admin.branches.index') }}"><i class="fas fa-abc"></i> <span>Manage Branches</span></a></li>
       <li class="{{ $request->segment(2) == 'departments' ? 'active' : '' }}"><a href="{{ route('admin.departments.index') }}"><i class="fas fa-abc"></i> <span>Manage Departments</span></a></li>
       <li class="{{ $request->segment(2) == 'job_titles' ? 'active' : '' }}"><a href="{{ route('admin.job_titles.index') }}"><i class="fas fa-abc"></i> <span>Manage Job Titles</span></a></li>

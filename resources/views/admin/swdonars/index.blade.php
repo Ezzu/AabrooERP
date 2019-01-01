@@ -31,7 +31,7 @@
                         <tr>
                             <td>{{ $Donar->id }}</td>
                             <td>{{ $Donar->donar_name }}</td>
-                            <td>{{ $Donar->phone_no }}</td>
+                            <td>@if($Donar->phone_no) {{ $Donar->phone_no }} @else {{ $Donar->cell_no }} @endif</td>
                             <td>{{ isset($Donar->area->name) ? $Donar->area->name : 'Not Specified' }}</td>
                             <td>{{ $Donar->address }}</td>
                             <td>{{ $Donar->created_at }}</td>
@@ -52,7 +52,7 @@
 @stop
 
 @section('js')
-    <script type="javascript/text" src="{{ asset('js\admin\areas\list.js') }}"></script>
+    <script type="javascript/text" src="{{ asset('js\admin\swdonars\list.js') }}"></script>
     <script>
         var FormControls = function(){
             $('#users-table').DataTable();

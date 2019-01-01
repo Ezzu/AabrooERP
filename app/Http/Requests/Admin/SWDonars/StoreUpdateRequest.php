@@ -27,7 +27,7 @@ class StoreUpdateRequest extends FormRequest
             'donar_name' => 'required',
             'address' => 'required',
             'area_id' => 'required',
-            'phone_no' => 'required'
+            // 'phone_no' => 'required'
         ];
     }
 }

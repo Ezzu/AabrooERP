@@ -35,6 +35,12 @@ class StoreUpdateRequest extends FormRequest
             'father_name' => 'required|max:255',
             'contact' => 'required|numeric',
             'email' => 'required|max:255',
+            'bank_id' => 'required',
+            'account_no' => 'required|max:255',
+            'basic_salary' => 'required|numeric|between:100,999999',
+            'medical_allowance' => 'required|numeric|between:100,999999',
+            'conveyance' => 'required|numeric|between:100,999999',
+            // 'image' => 'required',
         ];
     }
 }

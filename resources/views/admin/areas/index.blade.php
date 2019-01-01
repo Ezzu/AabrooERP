@@ -32,18 +32,17 @@
                             <td>{{ $Area->created_at }}</td>
                             <td>{{ $Area->updated_at }}</td>
                             <td>
-                                <a href="{{ route('admin.areas.edit', ['id' => $Area->id]) }}" class='btn btn-xs btn-info'><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
-                                <br>
+                                <a href="{{ route('admin.areas.edit', ['id' => $Area->id]) }}" style="float:left; margin: 2px;" class='btn btn-xs btn-info'><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</a>
                                 @if($Area->status)
-                                    <a href="{{ route('admin.areas.inactive', ['id' => $Area->id]) }}" class='btn btn-xs btn-warning' style='margin-top: 3px;'><i class="fa fa-times" aria-hidden="true"></i> Deactivate</a>
+                                    <a href="{{ route('admin.areas.inactive', ['id' => $Area->id]) }}" style="float:left; margin: 2px;"  class='btn btn-xs btn-warning' style='margin-top: 3px;'><i class="fa fa-times" aria-hidden="true"></i> Deactivate</a>
                                 @else
-                                    <a href="{{ route('admin.areas.active', ['id' => $Area->id]) }}" class='btn btn-xs btn-warning' style='margin-top: 3px;'><i class="fa fa-check" aria-hidden="true"></i> Activate</a>
+                                    <a href="{{ route('admin.areas.active', ['id' => $Area->id]) }}" style="float:left; margin: 2px;"  class='btn btn-xs btn-warning' style='margin-top: 3px;'><i class="fa fa-check" aria-hidden="true"></i> Activate</a>
                                 @endif
                                 
                                 <form action="{{ route('admin.areas.destroy', ['id' => $Area->id]) }}" method="post">
                                     {{ method_field('DELETE') }}
                                     {{ csrf_field() }}
-                                    <button class='btn btn-danger btn-xs' style='margin-top: 3px;' onclick='confirm("Are you sure you want to perform this action ?"'><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
+                                    <button class='btn btn-danger btn-xs' style="float:left; margin: 2px;" onclick='confirm("Are you sure you want to perform this action ?"'><i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
                                 </form>
                             </td>
                         </tr>
