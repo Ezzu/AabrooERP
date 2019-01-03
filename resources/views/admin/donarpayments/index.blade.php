@@ -26,6 +26,18 @@
             ['class' => 'form-control select2'  ,'id' => 'class']) !!}
         </div>
 
+        <div class="form-group col-md-3 @if($errors->has('month')) has-error @endif" id="class_div">
+            {!! Form::label('month', 'Month *', ['class' => 'control-label']) !!}
+            {!! Form::select('month', array('' => 'Choose a Month') + Config::get('admin.month_array') , old('month'),
+            ['class' => 'form-control select2'  ,'id' => 'month']) !!}
+        </div> 
+        
+        <div class="form-group col-md-3 @if($errors->has('year')) has-error @endif" id="class_div">
+            {!! Form::label('year', 'Year *', ['class' => 'control-label']) !!}
+            {!! Form::select('year', array('' => 'Choose Year') + Config::get('admin.year_array') , old('year'),
+            ['class' => 'form-control select2'  ,'id' => 'year']) !!}
+        </div>               
+
         <button id="search_button" style="margin-top: 25px;" class="btn  btn-sm btn-flat btn-primary"><b>&nbsp;Search </b> </button>
     {!! Form::close() !!}
 @stop
@@ -47,6 +59,8 @@
                                         <th>Class</th>
                                         <th>Roll#</th>
                                         <th>Sponser Type</th>
+                                        <th>Month</th>
+                                        <th>Year</th>
                                         <th>Payment Type</th>
                                         <th>Payment Status</th>
                                         <th>Created At</th>
@@ -61,6 +75,8 @@
                                             <td>{{ config::get('admin.class_array.'.$payment->student_sponsership->student->class) }}</td>
                                             <td>{{ $payment->student_sponsership->student->roll_no }}</td>
                                             <td>{{ config('admin.sponser_type_array.'.$payment->student_sponsership->sponser_type) }}</td>
+                                            <td>{{ config('admin.month_array.'.explode('-', $payment->created_at)[1]) }}</td>
+                                            <td>{{ explode('-', $payment->created_at)[0] }}</td>
                                             <td>{{ \App\Models\Admin\PaymentTypesModel::getPaymentTypeByID($payment->student_sponsership->donar->payment_type_id) }}</td>
                                             <td>{{ config::get('admin.payment_status_array.'.$payment->payment_status) }}</td>
                                             <td>{{ $payment->created_at }}</td>
