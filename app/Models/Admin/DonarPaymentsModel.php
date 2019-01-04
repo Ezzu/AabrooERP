@@ -108,8 +108,83 @@ class DonarPaymentsModel extends Model
                     ->join('donars', 'donars.id', '=', 'students_donars.donar_id')
                     ->where('donar_payments.payment_status', $payment_status)
                     ->where('students_donars.sponser_type', $sponser_type)
-                    ->where('students.class', $class)
+                    ->where('students.class', $class)   
                     ->OrderBy('donar_payments.created_at', 'desc')->get();
     }
+
+    static function activeOnly(){
+        return self::selectRaw('students_donars.*, students.*, donars.*, donar_payments.*')
+                    ->join('students_donars', 'students_donars.id', '=', 'donar_payments.sponsership_id')
+                    ->join('students', 'students.id', '=', 'students_donars.student_id')
+                    ->join('donars', 'donars.id', '=', 'students_donars.donar_id')
+                    ->OrderBy('donar_payments.created_at', 'desc');
+    }
     
+    static public function activeOnlyByClassOnly($class){
+        return self::selectRaw('students_donars.*, students.*, donars.*, donar_payments.*')
+                    ->join('students_donars', 'students_donars.id', '=', 'donar_payments.sponsership_id')
+                    ->join('students', 'students.id', '=', 'students_donars.student_id')
+                    ->join('donars', 'donars.id', '=', 'students_donars.donar_id')
+                    ->where('students.class', $class)
+                    ->OrderBy('donar_payments.created_at', 'desc');
+    }
+
+    static public function activeOnlyBySponserTypeOnly($sponser_type){
+        return self::selectRaw('students_donars.*, students.*, donars.*, donar_payments.*')
+                    ->join('students_donars', 'students_donars.id', '=', 'donar_payments.sponsership_id')
+                    ->join('students', 'students.id', '=', 'students_donars.student_id')
+                    ->join('donars', 'donars.id', '=', 'students_donars.donar_id')
+                    ->where('students_donars.sponser_type', $sponser_type)
+                    ->OrderBy('donar_payments.created_at', 'desc');
+    }
+
+    static public function activeOnlyBySponserTypeAndClass($sponser_type, $class){
+        return self::selectRaw('students_donars.*, students.*, donars.*, donar_payments.*')
+                    ->join('students_donars', 'students_donars.id', '=', 'donar_payments.sponsership_id')
+                    ->join('students', 'students.id', '=', 'students_donars.student_id')
+                    ->join('donars', 'donars.id', '=', 'students_donars.donar_id')
+                    ->where('students_donars.sponser_type', $sponser_type)
+                    ->where('students.class', $class)
+                    ->OrderBy('donar_payments.created_at', 'desc');
+    }
+    
+    static public function activeOnlyByPaymentStatus($payment_status){
+        return self::selectRaw('students_donars.*, students.*, donars.*, donar_payments.*')
+                    ->join('students_donars', 'students_donars.id', '=', 'donar_payments.sponsership_id')
+                    ->join('students', 'students.id', '=', 'students_donars.student_id')
+                    ->join('donars', 'donars.id', '=', 'students_donars.donar_id')
+                    ->where('donar_payments.payment_status', $payment_status)
+                    ->OrderBy('donar_payments.created_at', 'desc');
+    }
+        
+    static public function activeOnlyByPaymentStatusAndClass($payment_status, $class){
+        return self::selectRaw('students_donars.*, students.*, donars.*, donar_payments.*')
+                    ->join('students_donars', 'students_donars.id', '=', 'donar_payments.sponsership_id')
+                    ->join('students', 'students.id', '=', 'students_donars.student_id')
+                    ->join('donars', 'donars.id', '=', 'students_donars.donar_id')
+                    ->where('donar_payments.payment_status', $payment_status)
+                    ->where('students.class', $class)                    
+                    ->OrderBy('donar_payments.created_at', 'desc');
+    }
+            
+    static public function activeOnlyByPaymentStatusAndSponserType($payment_status, $sponser_type){
+        return self::selectRaw('students_donars.*, students.*, donars.*, donar_payments.*')
+                    ->join('students_donars', 'students_donars.id', '=', 'donar_payments.sponsership_id')
+                    ->join('students', 'students.id', '=', 'students_donars.student_id')
+                    ->join('donars', 'donars.id', '=', 'students_donars.donar_id')
+                    ->where('donar_payments.payment_status', $payment_status)
+                    ->where('students_donars.sponser_type', $sponser_type)
+                    ->OrderBy('donar_payments.created_at', 'desc');
+    }
+                
+    static public function activeOnlyByPaymentStatusSponserTypeAndClass($payment_status, $sponser_type, $class){
+        return self::selectRaw('students_donars.*, students.*, donars.*, donar_payments.*')
+                    ->join('students_donars', 'students_donars.id', '=', 'donar_payments.sponsership_id')
+                    ->join('students', 'students.id', '=', 'students_donars.student_id')
+                    ->join('donars', 'donars.id', '=', 'students_donars.donar_id')
+                    ->where('donar_payments.payment_status', $payment_status)
+                    ->where('students_donars.sponser_type', $sponser_type)
+                    ->where('students.class', $class)
+                    ->OrderBy('donar_payments.created_at', 'desc');
+    }
 }

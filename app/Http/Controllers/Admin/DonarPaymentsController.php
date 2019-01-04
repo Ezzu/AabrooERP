@@ -31,29 +31,39 @@ class DonarPaymentsController extends Controller
         $data = $request->all();
 
         if(!$data['payment_status'] && !$data['sponser_type'] && !$data['class']){
-            $DonarPayments = DonarPaymentsModel::getActiveOnly();
+            $DonarPayments = DonarPaymentsModel::activeOnly();
         }
         elseif(!$data['payment_status'] && !$data['sponser_type'] && $data['class']){
-            $DonarPayments = DonarPaymentsModel::getActiveOnlyByClassOnly($data['class']);
+            $DonarPayments = DonarPaymentsModel::activeOnlyByClassOnly($data['class']);
         }
         elseif(!$data['payment_status'] && $data['sponser_type'] && !$data['class']){
-            $DonarPayments = DonarPaymentsModel::getActiveOnlyBySponserTypeOnly($data['sponser_type']);
+            $DonarPayments = DonarPaymentsModel::activeOnlyBySponserTypeOnly($data['sponser_type']);
         }
         elseif(!$data['payment_status'] && $data['sponser_type'] && $data['class']){
-            $DonarPayments = DonarPaymentsModel::getActiveOnlyBySponserTypeAndClass($data['sponser_type'], $data['class']);
+            $DonarPayments = DonarPaymentsModel::activeOnlyBySponserTypeAndClass($data['sponser_type'], $data['class']);
         }
         elseif($data['payment_status'] && !$data['sponser_type'] && !$data['class']){
-            $DonarPayments = DonarPaymentsModel::getActiveOnlyByPaymentStatus($data['payment_status']);
+            $DonarPayments = DonarPaymentsModel::activeOnlyByPaymentStatus($data['payment_status']);
         }
         elseif($data['payment_status'] && !$data['sponser_type'] && $data['class']){
-            $DonarPayments = DonarPaymentsModel::getActiveOnlyByPaymentStatusAndClass($data['payment_status'], $data['class']);
+            $DonarPayments = DonarPaymentsModel::activeOnlyByPaymentStatusAndClass($data['payment_status'], $data['class']);
         }
         elseif($data['payment_status'] && $data['sponser_type'] && !$data['class']){
-            $DonarPayments = DonarPaymentsModel::getActiveOnlyByPaymentStatusAndSponserType($data['payment_status'], $data['sponser_type']); 
+            $DonarPayments = DonarPaymentsModel::activeOnlyByPaymentStatusAndSponserType($data['payment_status'], $data['sponser_type']); 
         }
         else{
-            $DonarPayments = DonarPaymentsModel::getActiveOnlyByPaymentStatusSponserTypeAndClass($data['payment_status'], $data['sponser_type'], $data['class']); 
+            $DonarPayments = DonarPaymentsModel::activeOnlyByPaymentStatusSponserTypeAndClass($data['payment_status'], $data['sponser_type'], $data['class']); 
         }
+
+        if($data['year']){
+            $DonarPayments->whereYear('donar_payments.created_at', '=', '20'.$data['year']);
+        }
+
+        if($data['month']){
+            $DonarPayments->whereMonth('donar_payments.created_at', '=', $data['month']);
+        }
+
+        $DonarPayments = $DonarPayments->get();
 
         return view('admin.donarpayments.index', compact('DonarPayments'));
 
