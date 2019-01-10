@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\DonarPaymentsModel;
 use App\Models\Admin\StudentsDonarsModel;
+use App\Models\Admin\StudentsModel;
+use App\Models\Admin\DonarsModel;
 
 class DonarPaymentsController extends Controller
 {
@@ -17,8 +19,12 @@ class DonarPaymentsController extends Controller
     public function index()
     {
         $DonarPayments = DonarPaymentsModel::getActiveOnly();
+        $Students = StudentsModel::pluckActiveOnly();
+        $Students->prepend('Select Student', '');
+        $Donars = DonarsModel::pluckActiveOnly();
+        $Donars->prepend('Select Donar');
 
-        return view('admin.donarpayments.index', compact('DonarPayments'));
+        return view('admin.donarpayments.index', compact('DonarPayments', 'Students', 'Donars'));
     }
     /**
      * Display a listing of the resource with filter.
@@ -63,9 +69,22 @@ class DonarPaymentsController extends Controller
             $DonarPayments->whereMonth('donar_payments.created_at', '=', $data['month']);
         }
 
+        if($data['student_id']){
+            $DonarPayments->where('students.id', '=', $data['student_id']);
+        }   
+
+        if($data['donar_id']){
+            $DonarPayments->where('donars.id', '=', $data['donar_id']);
+        }   
+
         $DonarPayments = $DonarPayments->get();
 
-        return view('admin.donarpayments.index', compact('DonarPayments'));
+        $Students = StudentsModel::pluckActiveOnly();
+        $Students->prepend('Select Student', '');
+        $Donars = DonarsModel::pluckActiveOnly();
+        $Donars->prepend('Select Donar');
+
+        return view('admin.donarpayments.index', compact('DonarPayments', 'Students', 'Donars'));
 
     }
 
@@ -172,7 +191,7 @@ class DonarPaymentsController extends Controller
     public function active($id){
 
         $DonarPaymentsModel = DonarPaymentsModel::find($id);
-        $DonarPaymentsModel->update(['payment_status' => !$DonarPaymentsModel->payment_status, 'payment_date' => \Carbon\Carbon::now()]);
+        $DonarPaymentsModel->update(['payment_status' => '1', 'payment_date' => \Carbon\Carbon::now()]);
         return redirect()->back();
 
     }
@@ -187,7 +206,7 @@ class DonarPaymentsController extends Controller
     public function inactive($id){
 
         $DonarPaymentsModel = DonarPaymentsModel::find($id);
-        $DonarPaymentsModel->update(['payment_status' => !$DonarPaymentsModel->payment_status, 'payment_date' => NULL]);
+        $DonarPaymentsModel->update(['payment_status' => '2', 'payment_date' => NULL]);
         return redirect()->back();
 
     }

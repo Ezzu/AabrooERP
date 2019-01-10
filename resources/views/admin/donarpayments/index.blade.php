@@ -38,6 +38,18 @@
             ['class' => 'form-control select2'  ,'id' => 'year']) !!}
         </div>               
 
+        <div class="form-group col-md-3 @if($errors->has('student_id')) has-error @endif" id="student_id_div">
+            {!! Form::label('student_id', 'Student *', ['class' => 'control-label']) !!}
+            {!! Form::select('student_id', $Students, old('student_id'),
+            ['class' => 'form-control select2'  ,'id' => 'student_id']) !!}
+        </div> 
+
+        <div class="form-group col-md-3 @if($errors->has('donar_id')) has-error @endif" id="donar_id_div">
+            {!! Form::label('donar_id', 'Donar *', ['class' => 'control-label']) !!}
+            {!! Form::select('donar_id', $Donars, old('donar_id'),
+            ['class' => 'form-control select2'  ,'id' => 'donar_id']) !!}
+        </div>           
+
         <button id="search_button" style="margin-top: 25px;" class="btn  btn-sm btn-flat btn-primary"><b>&nbsp;Search </b> </button>
     {!! Form::close() !!}
 @stop
@@ -75,15 +87,15 @@
                                             <td>{{ config::get('admin.class_array.'.$payment->student_sponsership->student->class) }}</td>
                                             <td>{{ $payment->student_sponsership->student->roll_no }}</td>
                                             <td>{{ config('admin.sponser_type_array.'.$payment->student_sponsership->sponser_type) }}</td>
-                                            <td>{{ config('admin.month_array.'.explode('-', $payment->created_at)[1]) }}</td>
+                                            <td>{{ config('admin.month_array.'.intval(explode('-', $payment->created_at)[1])) }}</td>
                                             <td>{{ explode('-', $payment->created_at)[0] }}</td>
                                             <td>{{ \App\Models\Admin\PaymentTypesModel::getPaymentTypeByID($payment->student_sponsership->donar->payment_type_id) }}</td>
                                             <td>{{ config::get('admin.payment_status_array.'.$payment->payment_status) }}</td>
                                             <td>{{ $payment->created_at }}</td>
                                             <td>
-                                            @if($payment->payment_status)
+                                            @if($payment->payment_status == '2')
                                                 <a href="{{ route('admin.donar_payments.active', ['id' => $payment->id]) }}" onclick = "confirm('Are you sure you want to undo ?')" class='btn btn-xs btn-warning' style='margin-top: 3px;'><i class="fa fa-times" aria-hidden="true"></i> Undo</a>
-                                            @else
+                                            @elseif($payment->payment_status == '1')
                                                 <a href="{{ route('admin.donar_payments.inactive', ['id' => $payment->id]) }}" onclick = "confirm('Are you sure you want to make payment ?')" class='btn btn-xs btn-success' style='margin-top: 3px;'><i class="fa fa-check" aria-hidden="true"></i> Pay</a>
                                             @endif
                                             </td>
